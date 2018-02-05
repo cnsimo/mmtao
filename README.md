@@ -52,6 +52,7 @@ Ajax数据的爬取（淘女郎为例）
 
 
 下面贴出代码：
+
 a. [myheaders.py](myheaders.py)    ----这个文件里保存了一些常用的 headers 头信息
 
     #!/usr/bin/env python
@@ -82,6 +83,7 @@ a. [myheaders.py](myheaders.py)    ----这个文件里保存了一些常用的 h
     	print(getUA())
 
 b. [mmtao.py](mmtao.py)       -----主程序
+
     #!/usr/bin/env python
     # -*- coding: utf-8 -*-
     # @Date: 2018-02-02 23:11:08
