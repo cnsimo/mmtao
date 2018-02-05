@@ -7,22 +7,22 @@ Ajax数据的爬取（淘女郎为例）
 > 网址：[https://0x9.me/xrh6z](https://0x9.me/xrh6z)
 
  
-### 判断一个页面是不是Ajax加载的方法：
-> 查看网页源代码，查找网页中加载的数据信息，如果源代码中不显示，证明是Ajax加载。
+### 判断一个页面是不是 Ajax 加载的方法：
+> 查看网页源代码，查找网页中加载的数据信息，如果源代码中不显示，证明是 Ajax 加载。
 如果是网站源代码中就包含要爬取的信息，那么就直接只用正则拿数据出来就行了
-但是如果网页源码中没有，那么就是Ajax了，可以进行抓包找到获取数据的相关接口，操作如下（以爬取淘女郎美女信息为例）：
+但是如果网页源码中没有，那么就是 Ajax 了，可以进行抓包找到获取数据的相关接口，操作如下（以爬取淘女郎美女信息为例）：
 
 ## 一、初级
 
-1. 寻找API接口：获取模特列表。
+1. 寻找 API 接口：获取模特列表。
 
-如果使用的是Chrome的话，可以首先选中XHR来更快速的找出获取数据的API，如果在XHR里面没有再去JS里面一个个的寻找。
+如果使用的是 Chrome 的话，可以首先选中 XHR 来更快速的找出获取数据的 API，如果在 XHR 里面没有再去 JS 里面一个个的寻找。
 
 ![](images/1.jpg)
 
-2. 找到API的URL为：[https://mm.taobao.com/alive/list.do](https://mm.taobao.com/alive/list.do)
+2. 找到 API 的 URL 为：[https://mm.taobao.com/alive/list.do](https://mm.taobao.com/alive/list.do)
 
-经过尝试，后面的参数都是可以去掉的，访问的时候默认page为1，所以如果要获取到所有页，需要使用for循环分别获取每一页的模特列表。
+经过尝试，后面的参数都是可以去掉的，访问的时候默认 page 为 1 ，所以如果要获取到所有页，需要使用 for 循环分别获取每一页的模特列表。
 
 ![](images/2.jpg)
 
@@ -30,7 +30,7 @@ Ajax数据的爬取（淘女郎为例）
 
 ![](images/3.jpg)
 
-4. 打开开发者工具，然后进行和刚刚相似的抓包操作。首先选中XHR进行快速的找出获取数据的API接口，可以很容易的找到这个地址：
+4. 打开开发者工具，然后进行和刚刚相似的抓包操作。首先选中 XHR 进行快速的找出获取数的 API 接口，可以很容易的找到这个地址：
 
 ![](images/4.jpg)
 
@@ -44,11 +44,11 @@ Ajax数据的爬取（淘女郎为例）
 
 ![](images/5.jpg)
 
-2.	但是我们发现在地址的GET参数中只有一个_input_charset=utf-8，而且默认获取的是第一页的妹子列表，正常情况下我们在GET参数中可以看到page=1类似的项，但这里没有，那么很显然它没有用GET就肯定用了POST，结果一看发现确实是这样子的。
+2.	但是我们发现在地址的 GET 参数中只有一个_input_charset=utf-8，而且默认获取的是第一页的妹子列表，正常情况下我们在 GET 参数中可以看到page=1类似的项，但这里没有，那么很显然它没有用GET就肯定用了 POST ，结果一看发现确实是这样子的。
 
 ![](images/6.jpg)
 
-3.	那么，这就简单了，使用requests库post请求数据，将请求来的json数据保存成表格，这项工作就结束了。
+3.	那么，这就简单了，使用 requests 库 post 请求数据，将请求来的 json 数据保存成表格，这项工作就结束了。
 
 
 下面贴出代码：
@@ -147,20 +147,22 @@ b. [mmtao.py](mmtao.py)       -----主程序
 
 
 导出的数据如下：
+
 ![](images/7.jpg)![](images/8.jpg)
 
 ## 三、高级
 
 虽然说数据已经出来了，但是对模特的描述还是不够具体，想要更具体的数据得通过他们的模特卡获得，例如：[https://mm.taobao.com/self/model_info.htm?spm=719.7800510.a312r.22.bKq7m9&user_id=277949921](https://mm.taobao.com/self/model_info.htm?spm=719.7800510.a312r.22.bKq7m9&user_id=277949921)
 ![](images/9.jpg)
-这里的信息要更加全面一些，所以我们从列表也只获取模特ID，然后通过模特卡来拿到更加详细的信息。
+这里的信息要更加全面一些，所以我们从列表也只获取模特 ID ，然后通过模特卡来拿到更加详细的信息。
 
-1.	首先分析模特卡页面，还是通过开发者工具，我们很容易找到了获取数据的URL：[https://mm.taobao.com/self/info/model_info_show.htm?user_id=277949921](https://mm.taobao.com/self/info/model_info_show.htm?user_id=277949921)
+1.	首先分析模特卡页面，还是通过开发者工具，我们很容易找到了获取数据的 URL ：[https://mm.taobao.com/self/info/model_info_show.htm?user_id=277949921](https://mm.taobao.com/self/info/model_info_show.htm?user_id=277949921)
 ![](images/10.jpg)
 2.	这次响应的数据并不是格式的，不过没有关系，我们还可以使用正则表达式将信息匹配出来。
 3.	这样我们仅仅比刚才编写的程序多了一个分析模特卡的步骤，很快就能写出来这个代码了。
 
 部分数据截图：
+
 ![](images/11.png)
 
 代码详见： [mmtao_plus.py](mmtao_plus.py)
