@@ -1,6 +1,6 @@
 # mmtao
 Ajax数据的爬取（淘女郎为例）
-
+如有疑问，转到 [Wiki](https://github.com/cnsimo/mmtao/wiki/FQA)
 
 # 淘女郎模特抓取教程
 
@@ -167,4 +167,4 @@ b. [mmtao.py](mmtao.py)       -----主程序
 
 ![](images/11.png)
 
-代码详见： [mmtao_plus.py](mmtao_plus.py)      如有问题，转到 [Wiki](https://github.com/cnsimo/mmtao/wiki/FQA)
+代码详见： [mmtao_plus.py](mmtao_plus.py) ，如有疑问，转到 [Wiki](https://github.com/cnsimo/mmtao/wiki/FQA)
