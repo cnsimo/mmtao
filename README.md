@@ -167,4 +167,4 @@ b. [mmtao.py](mmtao.py)       -----主程序
 
 ![](images/11.png)
 
-代码详见： [mmtao_plus.py](mmtao_plus.py)
+代码详见： [mmtao_plus.py](mmtao_plus.py)      如有问题，转到 [Wiki](https://github.com/cnsimo/mmtao/wiki/FQA)
