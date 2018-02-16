@@ -4,7 +4,7 @@ Ajax数据的爬取（淘女郎为例）
 
 # 淘女郎模特抓取教程
 
-> 网址：[https://0x9.me/xrh6z](https://0x9.me/xrh6z)
+> 网址：[https://mm.taobao.com/search_tstar_model.htm?spm=5679.126488.640745.2.1b545b81FfMEMX](https://mm.taobao.com/search_tstar_model.htm?spm=5679.126488.640745.2.1b545b81FfMEMX)
 
  
 ### 判断一个页面是不是 Ajax 加载的方法：
